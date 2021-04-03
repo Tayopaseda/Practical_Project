@@ -1,7 +1,7 @@
 ---
 # tasks file for run-tests
 - name: 'docker login'
-  shell: docker login --username={{username}} --password={{password}}
+  shell: echo {{password}} | docker login --username={{username}} --password-stdin
 
 - name: 'pull docker images'
   shell: docker pull {{username}}/frontend:latest && docker pull {{username}}/backend:latest
