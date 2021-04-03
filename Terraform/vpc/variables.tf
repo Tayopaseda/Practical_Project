@@ -1,3 +1,3 @@
 variable "id" {
-  value = "28.7.0.0/16"
+  default = "28.7.0.0/16"
 }
