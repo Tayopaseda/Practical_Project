@@ -1,0 +1,7 @@
+---
+# tasks file for install-docker
+- name: 'install docker'
+  shell: sudo apt-get update -y && sudo apt install curl -y && curl https://get.docker.com | sudo bash && sudo usermod -aG docker $(whoami)
+  
+- name: 'restart service'
+  shell: sudo systemctl restart docker
