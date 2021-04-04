@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('building test infrastructure') {
       steps {
-        withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword')]) {
+        withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword'), string(credentialsId: 'public_key', variable: 'publicKey')]) {
           sh './scripts/build_test_infrastructure.sh'
         }
       }
