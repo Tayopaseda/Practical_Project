@@ -11,25 +11,25 @@ sed -i "s/{{secret-key}}/$secretKey/g" ./backend/Dockerfile
 
 echo "building backend image"
 cd ./backend
-docker build -t backend:latest .
+sudo docker build -t backend:latest .
 
 echo "building frontend image"
 cd ..
 cd ./frontend
-docker build -t frontend:latest .
+sudo docker build -t frontend:latest .
 cd ..
 
 #push images to docker hub
 echo "pushing images to dockerhub"
 echo $dockerPassword | docker login --username=$dockerUsername --password-stdin
-docker tag backend:latest tayop/backend:latest
-docker tag frontend:latest tayop/frontend:latest
-docker push tayop/backend:latest
-docker push tayop/frontend:latest
+sudo docker tag backend:latest tayop/backend:latest
+sudo docker tag frontend:latest tayop/frontend:latest
+sudo docker push tayop/backend:latest
+sudo docker push tayop/frontend:latest
 
 echo "deleting images from jenkins system"
-docker rmi backend:latest frontend:latest tayop/frontend:latest tayop/backend:latest
-docker system prune -a -f
+sudo docker rmi backend:latest frontend:latest tayop/frontend:latest tayop/backend:latest
+sudo docker system prune -a -f
  
 #substitute everything back
 sed -i "s/$dbUser/{{db-user}}/g"  ./backend/Dockerfile
