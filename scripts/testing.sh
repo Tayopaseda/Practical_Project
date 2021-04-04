@@ -14,7 +14,10 @@ ansible-playbook -i inventory.yaml playbook.yaml
 cd ..
 
 #display test results
-ssh -i ~/.ssh/id_rsa ubuntu@$testIP cat backend-tests.txt && cat frontend-tests.txt
+echo "backend test results"
+ssh -i ~/.ssh/id_rsa ubuntu@$testIP cat backend-tests.txt
+echo "frontend test results"
+ssh -i ~/.ssh/id_rsa ubuntu@$testIP cat frontend-tests.txt
 
 #substitute variables in ansible directory back
 sed -i "s/$testIP/test-vm/g" ./ansible/inventory.yaml 
