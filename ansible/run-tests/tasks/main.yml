@@ -12,8 +12,11 @@
 - name: 'run containers'
   shell: docker run --network app-network -d -p 5001:5001 --name backend {{username}}/backend:latest && docker run --network app-network -d -p 5000:5000 --name frontend {{username}}/frontend:latest
 
-- name: 'run tests'
-  shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt && docker exec frontend bash -c "pytest tests/ --cov=application" > frontend-tests.txt
+- name: 'run backend tests'
+  shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt
+
+- name: 'run frontend tests'
+  shell: docker exec frontend bash -c "pytest tests/ --cov=application" > frontend-tests.txt
 
 - name: 'delete containers and images'
   shell: docker stop frontend backend && docker rmi {{username}}/backend:latest {{username}}/frontend:latest 
