@@ -1,13 +1,13 @@
 #! /bin/bash
 
 echo "building docker images"
-cd ..
+
 source ~/.bash_profile
 #substitute in env variables for image
 sed -i "s/{{db-user}}/$dbUser/g"  ./backend/Dockerfile
 sed -i "s/{{db-password}}/$dbPassword/g" ./backend/Dockerfile
 sed -i "s/{{db-uri}}/$testEndpoint/g" ./backend/Dockerfile
-sed -i "s/{{secret-key}}/$secretKey/g"" ./backend/Dockerfile
+sed -i "s/{{secret-key}}/$secretKey/g" ./backend/Dockerfile
 
 echo "building backend image"
 cd ./backend
@@ -35,4 +35,18 @@ docker system prune -a -f
 sed -i "s/$dbUser/{{db-user}}/g"  ./backend/Dockerfile
 sed -i "s/$dbPassword/{{db-password}}/g" ./backend/Dockerfile
 sed -i "s/$testEndpoint/{{db-uri}}/g" ./backend/Dockerfile
-sed -i "s/$secretKey/{{secret-key}}/g"" ./backend/Dockerfile
+sed -i "s/$secretKey/{{secret-key}}/g" ./backend/Dockerfile
+
+
+
+echo "destroying architecture"
+sudo sed -i "s/{username}/$dbUser/g" ./Terraform/rds/variables.tf
+sudo sed -i "s/{password}/$dbPassword/g" ./Terraform/rds/variables.tf
+
+cd ./Terraform
+
+terraform destroy -auto-approve
+cd ..
+sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
+sudo sed -i "s/$dbPassword/{password}/g" ./Terraform/rds/variables.tf
+
