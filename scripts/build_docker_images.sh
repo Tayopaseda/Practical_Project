@@ -37,16 +37,3 @@ sed -i "s/$dbPassword/{{db-password}}/g" ./backend/Dockerfile
 sed -i "s/$testEndpoint/{{db-uri}}/g" ./backend/Dockerfile
 sed -i "s/$secretKey/{{secret-key}}/g" ./backend/Dockerfile
 
-
-
-echo "destroying architecture"
-sudo sed -i "s/{username}/$dbUser/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/{password}/$dbPassword/g" ./Terraform/rds/variables.tf
-
-cd ./Terraform
-
-terraform destroy -auto-approve
-cd ..
-sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/$dbPassword/{password}/g" ./Terraform/rds/variables.tf
-
