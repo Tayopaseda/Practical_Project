@@ -10,7 +10,7 @@ pipeline {
     }
     stage('building Docker images') {
       steps {
-        withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword'), string(credentialsId: 'secret_key', variable: 'secretKey')]) {
+        withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword'), string(credentialsId: 'secret_key', variable: 'secretKey'), string(credentialsId: 'docker_password', variable: 'dockerPassword'), string(credentialsId: 'docker_username', variable: 'dockerUsername')]) {
           sh './scripts/build_docker_images.sh'
         }
       }
