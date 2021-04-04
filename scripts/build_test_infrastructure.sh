@@ -5,6 +5,7 @@ sed "s/{username}/$dbUser/g" ./Terraform/rds/variables.tf
 sed "s/{password}/$dbPassword/g" ./Terraform/rds/variables.tf
 
 cd ./Terraform
+terraform destroy -auto-approve
 terraform init
 terraform plan
 terraform apply -auto-approve
