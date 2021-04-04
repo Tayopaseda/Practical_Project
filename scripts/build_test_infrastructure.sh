@@ -14,6 +14,11 @@ export testIP=$(terraform output -raw test-vm-public-ip)
 export testEndpoint=$(terraform output -raw test-db-endpoint)
 EOF
 
+echo $testIP
+echo $testEndpoint
+
+terraform destroy -auto-approve
+
 #substitute variables back
 cd ..
 sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
