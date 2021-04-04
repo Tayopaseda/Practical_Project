@@ -18,7 +18,7 @@ pipeline {
     stage('setting up test vm and running tests') {
       steps {
         withCredentials([string(credentialsId: 'docker_password', variable: 'dockerPassword'), string(credentialsId: 'docker_username', variable: 'dockerUsername'), string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword')]) {
-          sh 'source ~/.bash_profile && sed -i "s/{{endpoint-address}}/$testEndpointAddress/g" ./scripts/populate_testdb.sh && sed -i "s/{{user}}/$dbUser/g" ./scripts/populate_testdb.sh && sed -i "s/{{password}}/$dbPassword/g" ./scripts/populate_testdb.sh'
+          sh './scripts/setup.sh'
           sh './scripts/populate_testdb.sh'
           sh './scripts/testing.sh'
         }
