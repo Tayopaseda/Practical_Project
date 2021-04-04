@@ -12,6 +12,7 @@ terraform apply -auto-approve
 cat > ~/.bash_profile << EOF
 export testIP=$(terraform output -raw test-vm-public-ip)
 export testEndpoint=$(terraform output -raw test-db-endpoint)
+export testEndpointAddress=$(terraform output -raw test-db-address)
 EOF
 
 #substitute variables back
