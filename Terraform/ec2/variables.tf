@@ -1,7 +1,3 @@
-variable "public-key" {
-  default = "{publickey}"
-}
-
 variable "test-vm-subnet" {
 
 }
