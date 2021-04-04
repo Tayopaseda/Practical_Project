@@ -15,12 +15,13 @@ module "subnets" {
 module "security_group" {
   source = "./security_group"
   vpc_id = module.vpc.id
+  test-vm-cidr = module.subnets.test-vm-cidr
 }
 
 module "route_table" {
   source = "./route_table"
   vpc_id = module.vpc.id
-  test-vm-subnet = module.subnet.test-vm
+  test-vm-subnet = module.subnets.test-vm
 }
 
 module "ec2" {

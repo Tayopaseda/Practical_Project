@@ -4,7 +4,7 @@ resource "aws_security_group" "test-vm" {
   description = "security group for test-vm"
   
   ingress {
-    desription = "allow inbound traffic on port 22 from jenkins"
+    description = "allow inbound traffic on port 22 from jenkins"
     from_port = 22
     to_port = 22
     protocol = "tcp"
@@ -38,6 +38,6 @@ resource "aws_security_group" "test-db" {
     from_port = 3306
     to_port = 3306
     protocol = "tcp"
-    security_groups = [aws_security_group.test-vm.id]
+    cidr_blocks = [var.test-vm-cidr]
   }
 } 
