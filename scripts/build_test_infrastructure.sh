@@ -3,7 +3,6 @@
 echo "building infrastructure"
 sudo sed -i "s/{username}/$dbUser/g" ./Terraform/rds/variables.tf
 sudo sed -i "s/{password}/$dbPassword/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/{publickey}/$(cat ~/.ssh/id_rsa.pub)/g" ./Terraform/ec2/main.tf
 
 cd ./Terraform
 terraform init
@@ -24,4 +23,3 @@ terraform destroy -auto-approve
 cd ..
 sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
 sudo sed -i "s/$dbPassword/{password}/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/$(cat ~/.ssh/id_rsa.pub)/{publickey}/g" ./Terraform/ec2/main.tf

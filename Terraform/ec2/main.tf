@@ -1,8 +1,3 @@
-resource "aws_key_pair" "jenkinsKey" {
-  key_name = "jenkinsKey"
-  public_key = "{publickey}"
-}
-
 resource "aws_instance" "test-vm" {
   ami = "ami-096cb92bb3580c759"
   instance_type = "t2.micro"
