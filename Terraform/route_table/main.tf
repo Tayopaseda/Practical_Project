@@ -11,7 +11,7 @@ resource "aws_route_table" "public" {
   }
 }
 
-resource "aws_route_table_association" {
+resource "aws_route_table_association" "ra" {
   subnet_id = var.test-vm-subnet
   route_table_id = aws_route_table.public.id
 }
