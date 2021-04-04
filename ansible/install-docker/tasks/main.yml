@@ -6,5 +6,5 @@
 - name: 'restart service'
   shell: sudo systemctl restart docker
 
--name: 'restart shell'
- meta: reset_connection
+- name: 'restart shell'
+  meta: reset_connection
