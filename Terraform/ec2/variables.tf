@@ -1,5 +1,5 @@
 variable "public-key" {
-  default = {public-key}
+  default = "{public-key}"
 }
 
 variable "test-vm-subnet" {
