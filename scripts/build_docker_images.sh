@@ -21,7 +21,7 @@ cd ..
 
 #push images to docker hub
 echo "pushing images to dockerhub"
-echo $dockerPassword | sudo docker login --username $dockerUsername --password-stdin
+echo $dockerPassword | sudo docker login --username=$dockerUsername --password-stdin
 sudo docker tag backend:latest tayop/backend:latest
 sudo docker tag frontend:latest tayop/frontend:latest
 sudo docker push tayop/backend:latest
