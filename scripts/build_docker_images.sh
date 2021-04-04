@@ -17,7 +17,7 @@ echo "building frontend image"
 cd ..
 cd ./frontend
 docker build -t frontend:latest .
-cd..
+cd ..
 
 #push images to docker hub
 echo "pushing images to dockerhub"
