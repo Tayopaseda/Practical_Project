@@ -15,6 +15,9 @@
 - name: 'run backend tests'
   shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt
 
+- name: 'add database uri for frontend tests'
+  shell: docker exec backend bash -c "export DATABASE_URI=$(TEST_DATABASE_URI)"
+
 - name: 'run frontend tests'
   shell: docker exec frontend bash -c "pytest tests/ --cov=application" > frontend-tests.txt
 
