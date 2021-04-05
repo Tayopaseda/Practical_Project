@@ -10,13 +10,10 @@
   shell: docker network create app-network
 
 - name: 'run containers'
-  shell: docker run --network app-network -d --name backend {{username}}/backend:latest && docker run --network app-network -d -p 5000:5000 --name frontend {{username}}/frontend:latest
+  shell: docker run --network app-network -d --name backend {{username}}/backend:latest && docker run --network app-network -d --name frontend {{username}}/frontend:latest
 
 - name: 'run backend tests'
   shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt
-
-- name: 'add database uri for frontend tests'
-  shell: docker exec backend bash -c "export DATABASE_URI=$(TEST_DATABASE_URI)"
 
 - name: 'run frontend tests'
   shell: docker exec frontend bash -c "pytest tests/ --cov=application" > frontend-tests.txt
