@@ -2,6 +2,6 @@
 
 source ~/.bash_profile 
 
-sed -i "s/{{endpoint-address}}/$testEndpointAddress/g" ./scripts/populate_testdb.sh 
-sed -i "s/{{user}}/$dbUser/g" ./scripts/populate_testdb.sh 
-sed -i "s/{{password}}/$dbPassword/g" ./scripts/populate_testdb.sh
+sed -i "s/{{endpoint-address}}/$testEndpointAddress/g" ./ansible/populate-database/tasks/main.yml 
+sed -i "s/{{user}}/$dbUser/g" ./ansible/populate-database/tasks/main.yml 
+sed -i "s/{{password}}/$dbPassword/g" ./ansible/populate-database/tasks/main.yml 

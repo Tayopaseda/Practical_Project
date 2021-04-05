@@ -19,7 +19,6 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'docker_password', variable: 'dockerPassword'), string(credentialsId: 'docker_username', variable: 'dockerUsername'), string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword')]) {
           sh './scripts/setup.sh'
-          sh './scripts/populate_testdb.sh'
           sh './scripts/testing.sh'
         }
       }

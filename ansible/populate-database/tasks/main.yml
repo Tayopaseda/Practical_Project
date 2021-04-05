@@ -1,0 +1,20 @@
+---
+# tasks file for populate-database
+- name: 'install mysql-client'
+  shell: sudo apt update -y && sudo apt install mysql-client-core-8.0 -y
+
+- name: 'create testdb if not exists'
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} CREATE DATABASE IF NOT EXISTS testdb;
+
+- name: 'use testdb'
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} USE testdb;
+   
+- name: 'drop table if exists'
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} DROP TABLE IF EXISTS users;
+
+- name: 'create users table'
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} CREATE TABLE users (userName varchar(30) NOT NULL);
+
+- name: 'insert values'
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} INSERT INTO users VALUES ('Bob'),('Jay'),('Matt'),('Ferg'),('Mo');
+   
