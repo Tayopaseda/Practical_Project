@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: production 
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: tayop/backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
