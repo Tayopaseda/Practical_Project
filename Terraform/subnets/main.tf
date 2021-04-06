@@ -21,8 +21,8 @@ resource "aws_subnet" "eks-cluster-1" {
   cidr_block = var.cluster-1
   map_public_ip_on_launch = true
   tags = {
-    kubernetes.io/cluster/app-cluster = "shared"
-    kubernetes.io/role/elb = "1"
+    "kubernetes.io/cluster/app-cluster" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -32,8 +32,8 @@ resource "aws_subnet" "eks-cluster-2" {
   cidr_block = var.cluster-2
   map_public_ip_on_launch = true
   tags = {
-    kubernetes.io/cluster/app-cluster = "shared"
-    kubernetes.io/role/elb = "1"
+    "kubernetes.io/cluster/app-cluster" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_subnet" "eks-cluster-3" {
   cidr_block = var.cluster-3
   map_public_ip_on_launch = true
   tags = {
-    kubernetes.io/cluster/app-cluster = "shared"
-    kubernetes.io/role/elb = "1"
+    "kubernetes.io/cluster/app-cluster" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
