@@ -1,0 +1,27 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: app-cluster
+  region: eu-west-2
+
+vpc:
+  id: {{vpc-id}}
+  subnets:
+    public:
+      public-1:
+        id: {{subnet-1}}
+      public-2:
+        id: {{subnet-2}}
+      public-3:
+        id: {{subnet-3}}
+
+
+managedNodeGroups:
+  - name: appGroup
+    instanceType: t3.medium
+    minSize: 2
+    maxSize: 3
+    ssh:
+      allow: true
+      publicKeyPath: "~/.ssh/id_rsa.pub"

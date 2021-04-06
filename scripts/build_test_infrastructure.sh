@@ -15,6 +15,10 @@ export testEndpoint=$(terraform output -raw test-db-endpoint)
 export testEndpointAddress=$(terraform output -raw test-db-address)
 export prodEndpoint=$(terraform output -raw prod-db-endpoint)
 export prodEndpointAddress=$(terraform output -raw prod-db-address)
+export vpcID=$(terraform output -raw vpc-id)
+export subnet1=$(terraform output -raw subnet-1)
+export subnet2=$(terraform output -raw subnet-2)
+export subnet3=$(terraform output -raw subnet-3)
 EOF
 
 #substitute variables back
