@@ -16,6 +16,11 @@ pipeline {
         }
       }
     }
+    stage('deploy app') {
+      steps {
+        sh './scripts/deploy.sh'
+      }
+    }
   }
 }
 
