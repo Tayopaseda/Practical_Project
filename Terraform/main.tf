@@ -16,6 +16,9 @@ module "security_group" {
   source = "./security_group"
   vpc_id = module.vpc.id
   test-vm-cidr = module.subnets.test-vm-cidr
+  cluster-1-cidr = module.subnets.cluster-1-cidr
+  cluster-2-cidr = module.subnets.cluster-2-cidr
+  cluster-3-cidr = module.subnets.cluster-3-cidr
 }
 
 module "route_table" {
@@ -35,4 +38,5 @@ module "rds" {
   rds-sub-1 = module.subnets.rds-1
   rds-sub-2 = module.subnets.rds-2
   test-db-sg = module.security_group.test-db
+  prod-db-sg = module.security_group.prod-db
 }

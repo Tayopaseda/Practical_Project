@@ -13,3 +13,27 @@ output "test-vm" {
 output "test-vm-cidr" {
   value = var.test-vm-cidr
 }
+
+output "cluster-1" {
+  value = aws_subnet.eks-cluster-1
+}
+
+output "cluster-2" {
+  value = aws_subnet.eks-cluster-2
+}
+
+output "cluster-3" {
+  value = aws_subnet.eks-cluster-3
+}
+
+output "cluster-1-cidr" {
+  value = var.cluster-1
+}
+
+output "cluster-2-cidr" {
+  value = var.cluster-2
+}
+
+output "cluster-3-cidr" {
+  value = var.cluster-3
+}

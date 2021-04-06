@@ -18,3 +18,6 @@ variable "password" {
   default = "{password}"
 }
 
+variable "prod-db-sg" {
+
+}
