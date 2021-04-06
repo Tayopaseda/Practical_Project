@@ -21,7 +21,4 @@ export subnet2=$(terraform output -raw subnet-2)
 export subnet3=$(terraform output -raw subnet-3)
 EOF
 
-#substitute variables back
-cd ..
-sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/$dbPassword/{password}/g" ./Terraform/rds/variables.tf
+
