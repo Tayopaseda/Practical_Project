@@ -16,5 +16,18 @@ resource "aws_route_table_association" "ra" {
   route_table_id = aws_route_table.public.id
 }
 
+resource "aws_route_table_association" "rc1" {
+  subnet_id = var.cluster-subnet-1
+  route_table_id = aws_route_table.public.id
+}
 
-  
+resource "aws_route_table_association" "rc2" {
+  subnet_id = var.cluster-subnet-2
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "rc3" {
+  subnet_id = var.cluster-subnet-3
+  route_table_id = aws_route_table.public.id
+}
+

@@ -15,15 +15,15 @@ output "test-vm-cidr" {
 }
 
 output "cluster-1" {
-  value = aws_subnet.eks-cluster-1
+  value = aws_subnet.eks-cluster-1.id
 }
 
 output "cluster-2" {
-  value = aws_subnet.eks-cluster-2
+  value = aws_subnet.eks-cluster-2.id
 }
 
 output "cluster-3" {
-  value = aws_subnet.eks-cluster-3
+  value = aws_subnet.eks-cluster-3.id
 }
 
 output "cluster-1-cidr" {

@@ -25,6 +25,9 @@ module "route_table" {
   source = "./route_table"
   vpc_id = module.vpc.id
   test-vm-subnet = module.subnets.test-vm
+  cluster-subnet-1 = module.subnets.cluster-1
+  cluster-subnet-2 = module.subnets.cluster-2
+  cluster-subnet-3 = module.subnets.cluster-3
 }
 
 module "ec2" {
