@@ -4,17 +4,17 @@
   shell: sudo apt update -y && sudo apt install mysql-client-core-8.0 -y
 
 - name: 'create testdb if not exists'
-  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "CREATE DATABASE IF NOT EXISTS testdb;"
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "CREATE DATABASE IF NOT EXISTS users;"
 
 - name: 'use testdb'
-  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE testdb;"
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE users;"
    
 - name: 'drop table if exists'
-  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE testdb; DROP TABLE IF EXISTS users;"
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE users; DROP TABLE IF EXISTS users;"
 
 - name: 'create users table'
-  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE testdb; CREATE TABLE users (userName varchar(30) NOT NULL);"
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE users; CREATE TABLE users (userName varchar(30) NOT NULL);"
 
 - name: 'insert values'
-  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE testdb; INSERT INTO users VALUES ('Bob'),('Jay'),('Matt'),('Ferg'),('Mo');"
+  shell: mysql -h {{endpoint-address}} -P 3306 -u {{user}} -p{{password}} -e "USE users; INSERT INTO users VALUES ('Bob'),('Jay'),('Matt'),('Ferg'),('Mo');"
    
