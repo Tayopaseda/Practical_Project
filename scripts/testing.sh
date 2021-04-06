@@ -24,15 +24,3 @@ sed -i "s/$testIP/test-vm/g" ./ansible/inventory.yaml
 sed -i "s/$dockerPassword/{{password}}/g" ./ansible/run-tests/tasks/main.yml
 sed -i "s/$dockerUsername/{{username}}/g" ./ansible/run-tests/tasks/main.yml
 
-
-
-echo "destroying architecture"
-sudo sed -i "s/{username}/$dbUser/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/{password}/$dbPassword/g" ./Terraform/rds/variables.tf
-
-cd ./Terraform
-
-terraform destroy -auto-approve
-cd ..
-sudo sed -i "s/$dbUser/{username}/g" ./Terraform/rds/variables.tf
-sudo sed -i "s/$dbPassword/{password}/g" ./Terraform/rds/variables.tf
