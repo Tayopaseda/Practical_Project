@@ -13,7 +13,7 @@ sudo usermod -aG docker jenkins
 #install Ansible
 sudo apt install software-properties-common
 sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
+sudo apt install ansible -y
 
 #install Terraform
 sudo apt install -y unzip wget

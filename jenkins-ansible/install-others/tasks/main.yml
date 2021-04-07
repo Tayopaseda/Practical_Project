@@ -1,0 +1,14 @@
+---
+# tasks file for install-others
+- name: 'install awscli'
+  shell: sudo apt update -y && sudo apt install awscli -y
+
+- name: 'install docker + ansible + terraform'
+  script: /home/tayopaseda/reimagined-umbrella/scripts/install_scripts.sh
+
+- name: 'install kubectl'
+  script: /home/tayopaseda/reimagined-umbrella/scripts/k8s_install.sh
+
+- name: 'install eksctl'
+  script: /home/tayopaseda/reimagined-umbrella/scripts/eks_install.sh
+

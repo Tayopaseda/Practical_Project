@@ -1,0 +1,4 @@
+---
+# tasks file for jenkins-install
+- name: 'run jenkins install script'
+  script: /home/tayopaseda/reimagined-umbrella/scripts/jenkins-install.sh

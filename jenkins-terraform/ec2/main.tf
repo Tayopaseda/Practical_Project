@@ -20,11 +20,15 @@ resource "aws_security_group" "jenkins" {
   }
 }
 
+resource "aws_key_pair" "jenkins" {
+  key_name = "jenkins-1"
+  public_key = file("~/.ssh/id_rsa.pub")
+}
 
 resource "aws_instance" "jenkins" {
   ami = "ami-096cb92bb3580c759"
   instance_type = "t2.micro"
-  key_name = "jenkinsKey"
+  key_name = "jenkins-1"
   associate_public_ip_address = true
   subnet_id = var.jenkins-subnet
   security_groups = [aws_security_group.jenkins.id]
