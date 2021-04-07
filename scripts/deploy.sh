@@ -10,4 +10,6 @@ kubectl apply -f nginx-lb.yaml -f nginx.yaml -f backend.yaml -f backend-dep.yaml
 kubectl rollout restart deployment backend
 kubectl rollout restart deployment flask-app
 
+sleep 3
+
 kubectl get services nginx-lb
