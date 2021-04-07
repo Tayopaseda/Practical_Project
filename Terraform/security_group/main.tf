@@ -8,7 +8,7 @@ resource "aws_security_group" "test-vm" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = ["18.133.138.107/32"]
+    cidr_blocks = ["3.10.228.93/32"]
   }
   
   ingress {
