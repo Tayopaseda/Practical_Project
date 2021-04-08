@@ -21,3 +21,12 @@
 - name: 'delete containers and images'
   shell: docker stop frontend backend && docker rm backend frontend && docker rmi -f {{username}}/backend:test {{username}}/frontend:test 
   
+- name: 'save frontend tests to jenkins'
+  fetch:
+    src: /home/ubuntu/frontend-tests.txt
+    dest: /home/jenkins
+
+- name: 'save backend tests to jenkins'
+  fetch:
+    src: /home/ubuntu/backend-tests.txt
+    dest: /home/jenkins
