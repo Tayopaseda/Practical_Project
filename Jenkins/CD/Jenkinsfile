@@ -31,8 +31,8 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts artifacts: '/home/jenkins/frontend-tests.txt', fingerprint: true, followSymlinks: false
-      archiveArtifacts artifacts: '/home/jenkins/backend-tests.txt', fingerprint: true, followSymlinks: false
+      archiveArtifacts artifacts: 'frontend-tests.txt', fingerprint: true, followSymlinks: false
+      archiveArtifacts artifacts: 'backend-tests.txt', fingerprint: true, followSymlinks: false
     }
   }
 }
