@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('building Docker images') {
+    stage('building test Docker images') {
       steps {
         withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword'), string(credentialsId: 'secret_key', variable: 'secretKey'), string(credentialsId: 'docker_password', variable: 'dockerPassword'), string(credentialsId: 'docker_username', variable: 'dockerUsername')]) {
-          sh './scripts/build_docker_images.sh'
+          sh './scripts/build_test_images.sh'
         }
       }
     }
@@ -16,6 +16,13 @@ pipeline {
         }
       }
     }
+    stage('build Docker images and push to Dockerhub') {
+      steps {
+        withCredentials([string(credentialsId: 'database_user', variable: 'dbUser'), string(credentialsId: 'test_db_password', variable: 'dbPassword'), string(credentialsId: 'secret_key', variable: 'secretKey'), string(credentialsId: 'docker_password', variable: 'dockerPassword'),string(credentialsId: 'docker_username', variable: 'dockerUsername')]) {
+          sh './scripts/build_docker_images.sh'
+         }
+       }
+     }
     stage('deploy app') {
       steps {
         sh './scripts/deploy.sh'
