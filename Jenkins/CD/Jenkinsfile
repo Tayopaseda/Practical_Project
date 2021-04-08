@@ -28,12 +28,12 @@ pipeline {
         sh './scripts/deploy.sh'
       }
     }
-    post {
-      always {
-        archiveArtifacts artifacts: '/home/jenkins/frontend-tests.txt', fingerprint: true, followSymlinks: false
-        archiveArtifacts artifacts: '/home/jenkins/backend-tests.txt', fingerprint: true, followSymlinks: false
-      }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: '/home/jenkins/frontend-tests.txt', fingerprint: true, followSymlinks: false
+      archiveArtifacts artifacts: '/home/jenkins/backend-tests.txt', fingerprint: true, followSymlinks: false
     }
-  }  
+  }
 }
 
