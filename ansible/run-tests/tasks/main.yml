@@ -7,7 +7,7 @@
   shell: docker pull {{username}}/frontend:test && docker pull {{username}}/backend:test
   
 - name: 'create bridge network for containers'
-  shell: docker network create app-network
+  shell: docker rm app-network && docker network create app-network
 
 - name: 'run containers'
   shell: docker run --network app-network -d --name backend {{username}}/backend:test && docker run --network app-network -d --name frontend {{username}}/frontend:test
@@ -19,7 +19,7 @@
   shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt
 
 - name: 'delete containers and images'
-  shell: docker stop frontend backend && docker rm backend frontend && docker rmi -f {{username}}/backend:test {{username}}/frontend:test 
+  shell: docker stop frontend backend && docker rm backend frontend && docker rmi -f {{username}}/backend:test {{username}}/frontend:test && docker network rm app-network 
   
 - name: 'save frontend tests to jenkins'
   fetch:
