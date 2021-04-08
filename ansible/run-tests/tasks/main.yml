@@ -24,11 +24,11 @@
 - name: 'save frontend tests to jenkins'
   fetch:
     src: /home/ubuntu/frontend-tests.txt
-    dest: /home/jenkins
+    dest: /home/jenkins/
     flat: yes
 
 - name: 'save backend tests to jenkins'
   fetch:
     src: /home/ubuntu/backend-tests.txt
-    dest: /home/jenkins
+    dest: /home/jenkins/
     flat: yes
