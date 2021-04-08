@@ -19,5 +19,5 @@
   shell: docker exec backend bash -c "pytest tests/ --cov=application" > backend-tests.txt
 
 - name: 'delete containers and images'
-  shell: docker stop frontend backend && docker rmi -f {{username}}/backend:latest {{username}}/frontend:latest 
+  shell: docker stop frontend backend && docker rm backend frontend && docker rmi -f {{username}}/backend:latest {{username}}/frontend:latest 
   
