@@ -12,12 +12,12 @@ sed -i "s/{{prod-db-uri}}/$prodEndpoint/g" ./backend/Dockerfile
 
 echo "building backend image"
 cd ./backend
-sudo docker build -t backend:latest .
+sudo docker build -t backend:test .
 
 echo "building frontend image"
 cd ..
 cd ./frontend
-sudo docker build -t frontend:latest .
+sudo docker build -t frontend:test .
 cd ..
 
 #push images to docker hub
